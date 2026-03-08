@@ -8,10 +8,10 @@ import {
     DoorOpen,
     UserPlus,
     ClipboardList,
-    History
+    History,
+    LucideIcon
 } from 'lucide-react';
 import BaseDashboard from '@/app/(dashboard)/dashboard/components/baseDashboard'
-import type { LucideIcon } from 'lucide-react';
 import type { AssetHistoryRow } from "@/lib/repositories/assets/getAssetHistory"
 import type { ItemHistoryRow } from "@/lib/repositories/items/getItemHistory"
 
