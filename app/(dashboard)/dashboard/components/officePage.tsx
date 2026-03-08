@@ -1,8 +1,13 @@
 import {
     Package,
-    Trash2,
-    Users,
-    UserCog
+    FileText,
+    List,
+    PlusCircle,
+    LogOut,
+    DoorOpen,
+    UserPlus,
+    History,
+    LucideIcon
 } from 'lucide-react';
 import BaseDashboard from '@/app/(dashboard)/dashboard/components/baseDashboard'
 import type { AssetHistoryRow } from "@/lib/repositories/assets/getAssetHistory"
@@ -16,53 +21,86 @@ type AdminDashboardProps = {
     itemsHistory: ItemHistoryRow[]
 }
 
-export default function AdminDashboard({ userId, userName, facilityId,assetsHistory, itemsHistory  }: AdminDashboardProps) {
 
-    const menuItems = [
+export type MenuItem = {
+    href: string;
+    title: string;
+    description: string;
+    icon: LucideIcon;
+    color: string;
+    hoverColor: string;
+};
+
+
+export default function officeDashboard({ userId, userName, facilityId, assetsHistory, itemsHistory }: AdminDashboardProps) {
+const menuItems: MenuItem[] = [
         {
-            href: '/dashboard/inventory',
-            title: '備品在庫',
-            description: '在庫数の確認・入出庫の管理',
+            href: '/item/inbound',
+            title: '入庫登録',
+            description: '消耗品の入庫数量を登録',
             icon: Package,
             color: 'from-blue-500 to-blue-600',
             hoverColor: 'hover:border-blue-400',
         },
         {
-            href: '/dashboard/waste-log',
-            title: '払出記録',
-            description: '払出の履歴と数量を確認',
-            icon: Trash2,
-            color: 'from-red-500 to-red-600',
-            hoverColor: 'hover:border-red-400',
+            href: '/item/outbound',
+            title: '払出登録',
+            description: '消耗品の払出数量を登録',
+            icon: LogOut,
+            color: 'from-orange-500 to-orange-600',
+            hoverColor: 'hover:border-orange-400',
         },
         {
-            href: '/dashboard/residents',
-            title: '入居者',
-            description: '入居者情報の一覧・編集',
-            icon: Users,
+            href: '/item',
+            title: '消耗品管理',
+            description: '消耗品の一覧確認・新規登録',
+            icon: List,
             color: 'from-purple-500 to-purple-600',
             hoverColor: 'hover:border-purple-400',
         },
         {
-            href: '/dashboard/orders/new',
-            title: '発注作成',
-            description: '発注を作成して申請',
-            icon: UserCog,
-            color: 'from-orange-500 to-orange-600',
-            hoverColor: 'hover:border-orange-400',
+            href: '/asset',
+            title: '資産管理',
+            description: '資産の一覧確認・新規登録',
+            icon: FileText,
+            color: 'from-green-500 to-green-600',
+            hoverColor: 'hover:border-green-400',
         },
         {
-            href: '/dashboard/orders',
-            title: '発注履歴',
-            description: '発注の履歴と状況を確認',
-            icon: UserCog,
-            color: 'from-orange-500 to-orange-600',
-            hoverColor: 'hover:border-orange-400',
+            href: '/asset/asset-bound',
+            title: '資産イベント登録',
+            description: '資産の移動・割り当てを登録',
+            icon: PlusCircle,
+            color: 'from-pink-500 to-pink-600',
+            hoverColor: 'hover:border-pink-400',
+        },
+        {
+            href: '/room-number/resident-register',
+            title: '入居者登録',
+            description: '新しい入居者を登録',
+            icon: UserPlus,
+            color: 'from-cyan-500 to-cyan-600',
+            hoverColor: 'hover:border-cyan-400',
+        },
+        {
+            href: '/room-number/room-numbers-register',
+            title: '部屋登録',
+            description: '新しい部屋を登録',
+            icon: DoorOpen,
+            color: 'from-yellow-500 to-yellow-600',
+            hoverColor: 'hover:border-yellow-400',
+        },
+        {
+            href: '/history',
+            title: '履歴',
+            description: '操作履歴を確認',
+            icon: History,
+            color: 'from-teal-500 to-blue-600',
+            hoverColor: 'hover:border-gray-400',
         },
     ];
-
     const baseDashboardProps = {
-        userId, userName, facilityId, menuItems,assetsHistory,itemsHistory
+        userId, userName, facilityId, menuItems, assetsHistory, itemsHistory
     }
 
     return (
