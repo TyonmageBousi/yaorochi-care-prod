@@ -55,7 +55,12 @@ export async function createAssetEvent(
         await tx
             .update(assets)
             .set({ ...updates, updatedAt: new Date() })
-            .where(eq(assets.id, data.assetId))
+            .where(
+                and(
+                    eq(assets.id, data.assetId),
+                    eq(assets.facilityId, facilityId)
+                )
+            )
             .execute();
 
         return row;

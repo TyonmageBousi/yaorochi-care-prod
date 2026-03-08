@@ -15,14 +15,14 @@ export async function POST(request: NextRequest) {
         // バリデーション
         const formData = await request.formData();
 
-        const data = {
+         const data = {
             itemCode: formData.get("itemCode"),
             name: formData.get("name"),
             unit: formData.get("unit"),
-            storageId: formData.get("parLevel"),
-            owner: formData.get("reorderPoint"),
-            status: formData.get("storageId"),
-            roomNumberId: formData.get("initialQty"),
+            parLevel: formData.get("parLevel"),
+            reorderPoint: formData.get("reorderPoint"),
+            storageId: formData.get("storageId"),
+            initialQty: formData.get("initialQty"),
             notes: formData.get("notes"),
             image: formData.get("image") instanceof File ? formData.get("image") : undefined,
             imageUrl: formData.get("imageUrl"),
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({
                 success: false,
                 code: "VALIDATION",
-                message: "消耗品の資産コードを同一になっております。"
+                message: "消耗品コードが同一になっております。"
             }, { status: 400 });
         }
 

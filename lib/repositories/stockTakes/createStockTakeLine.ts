@@ -43,7 +43,7 @@ export async function createStockTakeLine({ facilityId, storageId, notes, userId
     }
 
     // まとめて在庫取得
-    const systemQtyMap = await getCurrentStockQtyByItemIds(facilityId, targetItemIds);
+    const systemQtyMap = await getCurrentStockQtyByItemIds(facilityId, targetItemIds,storageId);
 
     const targetItems = targetItemIds.map((itemId) => ({
         itemId,

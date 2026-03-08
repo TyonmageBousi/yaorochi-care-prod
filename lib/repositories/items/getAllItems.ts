@@ -1,8 +1,9 @@
 import "server-only";
 import { db } from "@/db/index";
 import { items } from "@/db/schema";
-import { eq, asc } from "drizzle-orm";
+import { eq, asc, and } from "drizzle-orm";
 import { getCurrentStockQtyByItemIds } from "@/lib/repositories/items/getItemStock";
+import { ITEM_STATUS_FLAGS } from "@/db/schema"
 
 // 取得（Stockなし）
 export async function getItemOptions(facilityId: number) {
@@ -13,8 +14,12 @@ export async function getItemOptions(facilityId: number) {
             imageUrl: items.imageUrl,
         })
         .from(items)
-        .where(eq(items.facilityId, facilityId))
-        .orderBy(asc(items.name));
+        .where(
+            and(
+                eq(items.facilityId, facilityId),
+                eq(items.status, ITEM_STATUS_FLAGS.ACTIVE)
+            )
+        ).orderBy(asc(items.name));
 }
 
 // 取得（Stockあり）
