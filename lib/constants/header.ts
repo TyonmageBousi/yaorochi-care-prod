@@ -8,7 +8,6 @@ export const BREADCRUMB_MAP: Record<string, BreadcrumbItem[]> = {
         { label: "消耗品管理", href: "/item" },
     ],
     "/item/inbound": [
-        { label: "消耗品管理", href: "/item" },
         { label: "入庫登録", href: "/item/inbound" },
     ],
     "/item/outbound": [

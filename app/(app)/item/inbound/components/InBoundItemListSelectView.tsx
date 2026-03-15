@@ -42,13 +42,10 @@ export default function InBoundItemListSelectView({ items, fields, onAddItem, on
                 </div>
 
                 {/* 商品グリッド */}
-                <div className="grid grid-cols-2 gap-4 p-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5">
                     {items.length === 0 ? (
-                        /* 商品が存在しない場合 */
-                        <div className="col-span-2 py-14 text-center">
-                            <div className="text-5xl mb-3">📭</div>
-                            <p className="text-base font-bold text-gray-800">商品がありません</p>
-                            <p className="text-sm text-gray-500 mt-1">先に商品を登録してください。</p>
+                        <div className="col-span-1 md:col-span-2 py-14 text-center">
+                            {/* ... */}
                         </div>
                     ) : items.map((item) => {
                         const isSelected = fields.some(field => field.itemId === item.id);

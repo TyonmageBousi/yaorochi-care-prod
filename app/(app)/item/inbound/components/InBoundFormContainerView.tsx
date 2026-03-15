@@ -39,12 +39,11 @@ export default function InBoundFormContainerView({ itemOptions, storageLocations
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-sky-50 pb-6">
             <div className="max-w-2xl mx-auto px-5 py-6">
 
-                {/* ヘッダー */}
                 <div className="rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white p-5 shadow-lg">
-                    <div className="max-w-4xl mx-auto">
+                    <div className="mx-auto lg:max-w-4xl">
                         <p className="text-sm opacity-90">スタッフ用</p>
-                        <h1 className="text-2xl font-bold mt-1">消耗品（おむつ等）の新規登録</h1>
-                        <p className="text-sm mt-2 opacity-95">品目を登録し、初期在庫を入庫（台帳）に記録します</p>
+                        <h1 className="text-xl md:text-2xl font-bold mt-1">消耗品（おむつ等）の新規登録</h1>
+                        <p className="text-xs md:text-sm mt-2 opacity-95">品目を登録し、初期在庫を入庫（台帳）に記録します</p>
                     </div>
                 </div>
 
