@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react";
 import { RadioOption } from "@/components/form/RadioForm";
 import { ItemOptionWithStock } from "@/lib/repositories/items/getAllItems";
-import OutBoundItemFormView from "./OutBoundRoomSelectFormView";
+import OutBoundRoomSelectFormView from "./OutBoundRoomSelectFormView";
 import OutBoundItemListView from "./OutBoundItemListView";
 import OutBoundItemListSelectView from "./OutBoundItemListSelectView";
 import SubmitButton from "@/components/SubmitButton";
@@ -57,14 +57,7 @@ export default function OutBoundFormContainerView({ items, storages, rooms }: Pr
                 {/* ページヘッダー */}
                 <div className="rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 text-white p-5 shadow-lg mb-6">
                     <div className="max-w-xl mx-auto flex items-center gap-3">
-                        <button
-                            type="button"
-                            onClick={handleBack}
-                            aria-label="戻る"
-                            className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/20 hover:bg-white/30 transition-all text-xl font-bold flex-shrink-0"
-                        >
-                            ‹
-                        </button>
+
                         <div>
                             <p className="text-sm opacity-90">スタッフ用</p>
                             <h2 className="text-2xl font-bold leading-tight">払出登録</h2>
@@ -75,10 +68,14 @@ export default function OutBoundFormContainerView({ items, storages, rooms }: Pr
                 <form onSubmit={onSubmit} className="space-y-5">
 
                     {/* STEP 1 — 居室選択 */}
-                    <div className="bg-white rounded-2xl shadow-md border border-orange-100 p-5">
-                        <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-1">STEP 1</p>
-                        <p className="text-base font-bold text-slate-800 mb-4">利用居室番号</p>
-                        <OutBoundItemFormView
+                    <div className="bg-white rounded-2xl shadow-md border border-orange-100">
+                        {/* 案内メッセージ */}
+                        <div className="bg-orange-50 border-2 border-orange-200 rounded-xl p-4 mb-4">
+                            <div className="text-sm text-orange-800 font-bold mb-1">📦 払い出す居室を選択</div>
+                        </div>
+
+
+                        <OutBoundRoomSelectFormView
                             register={register}
                             errors={errors}
                             roomOptions={roomOptions}
@@ -87,9 +84,7 @@ export default function OutBoundFormContainerView({ items, storages, rooms }: Pr
 
                     {/* STEP 2 — 商品リスト（居室選択後に表示） */}
                     {roomId !== "" && (
-                        <div className="bg-white rounded-2xl shadow-md border border-orange-100 p-5">
-                            <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-1">STEP 2</p>
-                            <p className="text-base font-bold text-slate-800 mb-4">払い出す商品</p>
+                        <div className="bg-white rounded-2xl shadow-md border border-orange-100">
                             <OutBoundItemListView
                                 fields={fields}
                                 items={upItems}

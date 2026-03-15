@@ -3,7 +3,7 @@ import { UseFormRegister, FieldErrors, FieldArrayWithId } from "react-hook-form"
 import { OutBoundValues } from "@/lib/validations/outBound";
 import { ItemOptionWithStock } from "@/lib/repositories/items/getAllItems";
 import { RadioOption } from "@/components/form/RadioForm";
-import PayoutItemCard from "./OutBoundItemFormView";
+import OutBoundItemFormView from "@/app/(app)/item/outbound/components/OutBoundItemFormView";
 
 type Props = {
     fields: FieldArrayWithId<OutBoundValues, "rows", "id">[];
@@ -35,7 +35,7 @@ export default function OutBoundItemListView({ fields, items, register, errors, 
                 ＋ 商品を追加
             </button>
 
-            {/* 選択済み商品リスト */}
+            {/* 選択済み商品リスト */}  
             {fields.length === 0 ? (
                 <div className="text-center py-8 text-gray-400">
                     まだ商品が選択されていません
@@ -46,7 +46,7 @@ export default function OutBoundItemListView({ fields, items, register, errors, 
                         const item = items.find(i => i.id === field.itemId);
                         if (!item) return null;
                         return (
-                            <PayoutItemCard
+                            <OutBoundItemFormView
                                 key={field.id}
                                 field={field}
                                 index={index}
